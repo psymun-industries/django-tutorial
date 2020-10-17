@@ -83,7 +83,7 @@ Look at all those files, are they all for me!?
     ├── tests.py
     └── views.py
 ```
-As you can see, the Python module ```manage.py``` is essentially God, importing all the tools to manage the entire project. Hence the name, I suppose. In contrast, ```mysite/settings.py``` (which we'll see later) takes on the role the apostles, to whom we, being like Jesus, proselytize God's instructions in a rather disparate and convulted way, in the hope that they will be carried out in the way God (```manage.py```) intends. When the project contains more than one app, we can think of these as multiple universes, each with its own Jesus and his apostles, but all under one God.
+As you can see, the Python module ```manage.py``` is essentially God, importing all the tools to manage the entire project. Hence the name, I suppose. In contrast, ```mysite/settings.py``` (which we'll see later) takes on the role the apostles, to whom we, being like Jesus, propagate God's wishes, in the hope that they will be carried out in the way God (```manage.py```) intends. When the project contains more than one app, we can think of these as multiple universes, each with its own Jesus and his apostles, but all under one God.
 
  Hopefully that clears up any confusion at this early stage. 
 
@@ -122,4 +122,33 @@ The docs then go on to describe the DB migrations in detail. If you're happy wit
 ```python
 python manage.py makemigrations
 python manage.py migrate
+```
+
+### Further sculpting our models
+We add ```__str__()``` methods to our models so they identify themselves in a readable way when called upon by the system. Those familiar with Python will recognize its special double-underscore methods. Those who are not will soon grow to love them and their weird, hard-to-type syntax. 
+
+We also add ```datetime``` functionality to the ```Question``` model by way of a ```pub_date``` field and the ```was_published_recently()``` method which returns whether or not the ```Question``` was incarnated within the last day. 
+
+At this point, we open up God's sandbox and create instances of his great models. I opened up a REPL shell and created thus:
+```
+(.env) ~/dev/repos/django-tutorial/mysite$ python manage.py shell
+Python 3.8.5 (default, Jul 28 2020, 12:59:40) 
+[GCC 9.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from polls.models import Choice, Question
+>>> from django.utils import timezone
+>>> q = Question(question_text="Where am I?", pub_date=timezone.now())
+>>> q.save()
+>>> q.question_text
+'Where am I?'
+>>> q.choice_set.create(choice_text="Outer space", votes=0)
+<Choice: Outer space>
+>>> q.choice_set.create(choice_text="Hell", votes=0)
+<Choice: Hell>
+>>> q.choice_set.create(choice_text="The lavatory", votes=0)
+<Choice: The lavatory>
+>>> q.choice_set.all()
+<QuerySet [<Choice: Outer space>, <Choice: Hell>, <Choice: The lavatory>]>
+>>> exit()
 ```
