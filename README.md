@@ -83,7 +83,9 @@ Look at all those files, are they all for me!?
     ├── tests.py
     └── views.py
 ```
-As you can see, the Python module ```manage.py``` is essentially God from the application's perspective, containing lots of tools to manage the entire project. Hence the name, I suppose. In contrast, ```mysite/settings.py``` (which we'll see later) is like the apostles, to whom we, being like Jesus, proselytize God's instructions in a rather disparate and convulted way, in the hope that they will be carried out in the way God (```settings.py```) intends. Hopefully that clears up any confusion at this early stage. 
+As you can see, the Python module ```manage.py``` is essentially God, importing all the tools to manage the entire project. Hence the name, I suppose. In contrast, ```mysite/settings.py``` (which we'll see later) takes on the role the apostles, to whom we, being like Jesus, proselytize God's instructions in a rather disparate and convulted way, in the hope that they will be carried out in the way God (```manage.py```) intends. When the project contains more than one app, we can think of these as multiple universes, each with its own Jesus and his apostles, but all under one God.
+
+ Hopefully that clears up any confusion at this early stage. 
 
 ### First view
 Anyway, next we create ```polls/views.py``` as shown. We define a function ```index()``` which takes an HTTP request as a parameter and returns an ```HttpResponse``` object. As you can imagine, this response eventually gets fed to the client browser.
@@ -100,4 +102,3 @@ Wonderful. Now's the time to
 python manage.py runserver
 ```
 and visit http://localhost:8000/polls which will hopefully yield an actual VIEW! Time for a beer I reckon. 
- 
