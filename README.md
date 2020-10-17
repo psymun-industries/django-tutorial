@@ -114,7 +114,7 @@ python manage.py migrate # And God said "Let there be a table for each of my mod
 ### Models
 Now that God's happy, we can make some models of our own. We are Jesus after all, so we can morph into God ourselves if we so choose, and do all the stuff God can.
 
-We define the Python classes ```Question``` and ```Choice```. These are automatically mapped to database models which contain the fields we define in the classes. The ```django.db.models``` module handles all of this for us, and our models inherit from the base ```Model``` class and can use all the field types defined in that very module. Who said OO was shit!?
+We define the Python classes ```Question``` and ```Choice```. These are automatically mapped to database models with the fields we define. The ```django.db.models``` module handles all of this for us: our models inherit from the base ```Model``` class and use all field types defined for us beforehand. Who said OO was shit!?
 
 Once we've invented the models we need to meet the apostles again and let them know their universe has changed. We do this by registering the app in ```mysite/settings.py``` which basically makes the ```polls``` universe aware of itself and the models it contains. 
 
