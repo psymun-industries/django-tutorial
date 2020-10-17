@@ -102,3 +102,24 @@ Wonderful. Now's the time to
 python manage.py runserver
 ```
 and visit http://localhost:8000/polls which will hopefully yield an actual VIEW! Time for a beer I reckon. 
+
+## [Part 2](https://docs.djangoproject.com/en/3.1/intro/tutorial02/)
+Time for a quick chat with the apostles via the app's ```settings.py```. I changed ```LANGUAGE_CODE``` to ```'en-gb'``` because that's what I speak, and left the time zone as UTC because that's my time. Maybe it even works out local daylight savings, who knows. 
+
+### First DB migration
+Django comes with a load of cool models and templates built in, plus an excellent site admin facility, so there's already a DB migration to be done before we've written any models. We'll do what the pros tell us:
+```python
+python manage.py migrate # And God said "Let there be a table for each of my models"
+```
+### Models
+Now that God's happy, we can make some models of our own. We are Jesus after all, so we can morph into God ourselves if we so choose, and do all the stuff God can.
+
+We define the Python classes ```Question``` and ```Choice```. These are automatically mapped to database models which contain the fields we define in the classes. The ```django.db.models``` module handles all of this for us, and our models inherit from the base ```Model``` class and can use all the field types defined in that very module. Who said OO was shit!?
+
+Once we've invented the models we need to meet the apostles again and let them know their universe has changed. We do this by registering the app in ```mysite/settings.py``` which basically makes the ```polls``` universe aware of itself and the models it contains. 
+
+The docs then go on to describe the DB migrations in detail. If you're happy with that, the quick way out is 
+```python
+python manage.py makemigrations
+python manage.py migrate
+```
