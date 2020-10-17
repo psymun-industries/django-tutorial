@@ -152,3 +152,12 @@ Type "help", "copyright", "credits" or "license" for more information.
 <QuerySet [<Choice: Outer space>, <Choice: Hell>, <Choice: The lavatory>]>
 >>> exit()
 ```
+
+### I AM SUPERUSER
+We are now invited to unlock Django's fabulous admin site. For this, it needs our credentials. We follow along with
+```python
+python manage.py createsuperuser
+```
+Once you're all present and correct, spin up the server if it's not already going, visit http://localhost:8000/admin and behold. We can already modify users and groups, but our models aren't showing up. In order to do this, we need to go back in time and describe our models to Moses, who is in the form of ```polls/admin.py```. We import our ```Question``` model and then ```admin.site.register(Question)``` does the trick. We can just save the file and refresh the browser without needing to restart the server. ```Question```s are now a part of this universe. 
+
+There's more to do, we still need to handle responses, but still. It's definitely time for a beer.
