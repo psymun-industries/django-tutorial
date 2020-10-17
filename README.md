@@ -1,5 +1,8 @@
 # django-tutorial
-The official djangoproject.com tutorial, ```venv```ed and ```git```ified for your delectation
+The official djangoproject.com tutorial, `venv`ed and `git`ified for your delectation
+#
+## Work in progress
+#
 
 ## What's this?
 This is the [tutorial from Django's documentation](https://docs.djangoproject.com/en/3.1/intro/tutorial01/), using the newest version of the package, at the time of writing: 3.1.2. It's set up from the perspective of someone using a Debian/Ubuntu sort of system. 
@@ -15,14 +18,14 @@ First make sure that Python 3.6 or greater is available on your path. I'm using 
 ```bash
 sudo apt install -y python3-pip python3-venv
 ```
-I also highly recommend installing the ```tree``` package if you don't have it to hand so you can visualize the directory structure of the project more easily, and in line with how it's presented in the Django documentation. 
+I also highly recommend installing the `tree` package if you don't have it to hand so you can visualize the directory structure of the project more easily, and in line with how it's presented in the Django documentation. 
 
-The following commands install and activate a virtual environment so version changes in the system Python installation won't affect the project. You might have already pointed ```python``` to your preferred version of Python 3, in which case ```python3``` below should just be ```python```. 
+The following commands install and activate a virtual environment so version changes in the system Python installation won't affect the project. You might have already pointed `python` to your preferred version of Python 3, in which case `python3` below should just be `python`. 
 ```bash
 python3 -m venv .env 
 source .env/bin/activate # sets environment vars in your terminal
 ```
-The links ```pip``` and ```python``` are now pointing to the appropriate versions for the project within the ```venv```. So we can just run: 
+The links `pip` and `python` are now pointing to the appropriate versions for the project within the `venv`. So we can just run: 
 ```bash
 pip install -r requirements.txt
 ```
@@ -45,7 +48,7 @@ From the root directory of the repo, ensure you're in the magical dreamworld of 
 ```python
 django-admin startproject mysite
 ```
-You can run ```cd mysite/ && tree``` to check that the generated files look like the Docs say they should. Hopefully 
+You can run `cd mysite/ && tree` to check that the generated files look like the Docs say they should. Hopefully 
 ```python
 python manage.py runserver
 ```
@@ -83,18 +86,18 @@ Look at all those files, are they all for me!?
     ├── tests.py
     └── views.py
 ```
-As you can see, the Python module ```manage.py``` is essentially God, importing all the tools to manage the entire project. Hence the name, I suppose. In contrast, ```mysite/settings.py``` (which we'll see later) takes on the role the apostles, to whom we, being like Jesus, propagate God's wishes, in the hope that they will be carried out in the way God (```manage.py```) intends. When the project contains more than one app, we can think of these as multiple universes, each with its own Jesus and his apostles, but all under one God.
+As you can see, the Python module `manage.py` is essentially God, importing all the tools to manage the entire project. Hence the name, I suppose. In contrast, `mysite/settings.py` (which we'll see later) takes on the role the apostles, to whom we, being like Jesus, propagate God's wishes, in the hope that they will be carried out in the way God (`manage.py`) intends. When the project contains more than one app, we can think of these as multiple universes, each with its own Jesus and his apostles, but all under one God.
 
  Hopefully that clears up any confusion at this early stage. 
 
 ### First view
-Anyway, next we create ```polls/views.py``` as shown. We define a function ```index()``` which takes an HTTP request as a parameter and returns an ```HttpResponse``` object. As you can imagine, this response eventually gets fed to the client browser.
+Anyway, next we create `polls/views.py` as shown. We define a function `index()` which takes an HTTP request as a parameter and returns an `HttpResponse` object. As you can imagine, this response eventually gets fed to the client browser.
 
-The next bit is potentially confusing. We'll create two files called ```urls.py```, one in the application root, ```mysite/polls/``` and one in the project root, ```mysite/```. 
+The next bit is potentially confusing. We'll create two files called `urls.py`, one in the application root, `mysite/polls/` and one in the project root, `mysite/`. 
 
-The former ```mysite/poll/urls.py``` maps the output of ```index()```, an ```HttpRespose```, to a blank (root) URL from the perspective of the ```polls``` application. 
+The former `mysite/poll/urls.py` maps the output of `index()`, an `HttpRespose`, to a blank (root) URL from the perspective of the `polls` application. 
 
-The latter ```mysite/urls.py``` maps any URLs defined in our ``polls`` app to the URL ```polls/``` from the perspective of the entire project. So the views defined in ```polls``` are all under the URL ```polls/```. 
+The latter `mysite/urls.py` maps any URLs defined in our ``polls`` app to the URL `polls/` from the perspective of the entire project. So the views defined in `polls` are all under the URL `polls/`. 
 
 Wonderful. Now's the time to 
 
@@ -104,7 +107,7 @@ python manage.py runserver
 and visit http://localhost:8000/polls which will hopefully yield an actual VIEW! Time for a beer I reckon. 
 
 ## [Part 2](https://docs.djangoproject.com/en/3.1/intro/tutorial02/)
-Time for a quick chat with the apostles via the app's ```settings.py```. I changed ```LANGUAGE_CODE``` to ```'en-gb'``` because that's what I speak, and left the time zone as UTC because that's my time. Maybe it even works out local daylight savings, who knows. 
+Time for a quick chat with the apostles via the app's `settings.py`. I changed `LANGUAGE_CODE` to `'en-gb'` because that's what I speak, and left the time zone as UTC because that's my time. Maybe it even works out local daylight savings, who knows. 
 
 ### First DB migration
 Django comes with a load of cool models and templates built in, plus an excellent site admin facility, so there's already a DB migration to be done before we've written any models. We'll do what the pros tell us:
@@ -114,9 +117,9 @@ python manage.py migrate # And God said "Let there be a table for each of my mod
 ### Models
 Now that God's happy, we can make some models of our own. We are Jesus after all, so we can morph into God ourselves if we so choose, and do all the stuff God can.
 
-We define the Python classes ```Question``` and ```Choice```. These are automatically mapped to database models with the fields we define. The ```django.db.models``` module handles all of this for us: our models inherit from the base ```Model``` class and use all field types defined for us beforehand. Who said OO was shit!?
+We define the Python classes `Question` and `Choice`. These are automatically mapped to database models with the fields we define. The `django.db.models` module handles all of this for us: our models inherit from the base `Model` class and use all field types defined for us beforehand. Who said OO was shit!?
 
-Once we've invented the models we need to meet the apostles again and let them know their universe has changed. We do this by registering the app in ```mysite/settings.py``` which basically makes the ```polls``` universe aware of itself and the models it contains. 
+Once we've invented the models we need to meet the apostles again and let them know their universe has changed. We do this by registering the app in `mysite/settings.py` which basically makes the `polls` universe aware of itself and the models it contains. 
 
 The docs then go on to describe the DB migrations in detail. If you're happy with that, the quick way out is 
 ```python
@@ -125,9 +128,9 @@ python manage.py migrate
 ```
 
 ### Further sculpting our models
-We add ```__str__()``` methods to our models so they identify themselves in a readable way when called upon by the system. Those familiar with Python will recognize its special double-underscore methods. Those who are not will soon grow to love them and their weird, hard-to-type syntax. 
+We add `__str__()` methods to our models so they identify themselves in a readable way when called upon by the system. Those familiar with Python will recognize its special double-underscore methods. Those who are not will soon grow to love them and their weird, hard-to-type syntax. 
 
-We also add ```datetime``` functionality to the ```Question``` model by way of a ```pub_date``` field and the ```was_published_recently()``` method which returns whether or not the ```Question``` was incarnated within the last day. 
+We also add `datetime` functionality to the `Question` model by way of a `pub_date` field and the `was_published_recently()` method which returns whether or not the `Question` was incarnated within the last day. 
 
 At this point, we open up God's sandbox and create instances of his great models. I opened up a REPL shell and created thus:
 ```
@@ -158,6 +161,6 @@ We are now invited to unlock Django's fabulous admin site. For this, it needs ou
 ```python
 python manage.py createsuperuser
 ```
-Once you're all present and correct, spin up the server if it's not already going, visit http://localhost:8000/admin and behold. We can already modify users and groups, but our models aren't showing up. In order to do this, we need to go back in time and describe our models to Moses, who is in the form of ```polls/admin.py```. We import our ```Question``` model and then ```admin.site.register(Question)``` does the trick. We can just save the file and refresh the browser without needing to restart the server. ```Question```s are now a part of this universe. 
+Once you're all present and correct, spin up the server if it's not already going, visit http://localhost:8000/admin and behold. We can already modify users and groups, but our models aren't showing up. In order to do this, we need to go back in time and describe our models to Moses, who is in the form of `polls/admin.py`. We import our `Question` model and then `admin.site.register(Question)` does the trick. We can just save the file and refresh the browser without needing to restart the server. `Question`s are now a part of this universe. 
 
-There's more to do, we still need to handle responses, but still. It's definitely time for a beer.
+There's more to do, we still need to handle `Choice`s, but still. It's definitely time for a beer.
